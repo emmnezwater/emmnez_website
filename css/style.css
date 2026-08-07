@@ -464,6 +464,17 @@ main {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
+/* Cards that sit directly on a white section, where a plain white card
+   reads flat. Reuses the existing neutral-gray token rather than a new color. */
+.card-tinted {
+    background-color: var(--neutral-gray);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.card-tinted .card-icon {
+    background-color: var(--secondary-white);
+}
+
 .card-icon {
     width: 60px;
     height: 60px;
