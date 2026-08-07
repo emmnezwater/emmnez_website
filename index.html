@@ -22,7 +22,7 @@
         content="Water treatment, factory installation, equipment supply, and expert support for homes, businesses, schools, and industries in Nigeria.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.emmnezwater.com/">
-    <meta property="og:image" content="https://www.emmnezwater.com/images/hero-machine.jpg">
+    <meta property="og:image" content="https://www.emmnezwater.com/images/hero-machine.webp">
     <meta property="og:site_name" content="Emmnez Water Solution Ltd">
 
     <!-- Twitter Card -->
@@ -30,7 +30,7 @@
     <meta name="twitter:title" content="Emmnez Water Solution | Clean Water Solutions Made Simple">
     <meta name="twitter:description"
         content="Water treatment, factory installation, equipment supply, and expert support for homes, businesses, schools, and industries in Nigeria.">
-    <meta name="twitter:image" content="https://www.emmnezwater.com/images/hero-machine.jpg">
+    <meta name="twitter:image" content="https://www.emmnezwater.com/images/hero-machine.webp">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +39,95 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Emmnez Water Solution Ltd",
+        "alternateName": "Emmnez Water Solution",
+        "url": "https://www.emmnezwater.com/",
+        "logo": "https://www.emmnezwater.com/images/logo.jpg",
+        "image": "https://www.emmnezwater.com/images/hero-machine.webp",
+        "description": "Water treatment, factory installation, equipment supply, and expert support for homes, businesses, schools, and industries in Nigeria.",
+        "telephone": "+2347030209730",
+        "email": "emmnezwatersolution@gmail.com",
+        "foundingDate": "2015-06-12",
+        "sameAs": [
+            "https://twitter.com/Emmnez1202"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "8 Micheal Street, Iwofe Road",
+            "addressLocality": "Port Harcourt",
+            "addressRegion": "Rivers State",
+            "addressCountry": "NG"
+        },
+        "areaServed": [
+            "Rivers State",
+            "Imo State",
+            "Akwa Ibom State",
+            "Delta State"
+        ],
+        "department": [
+            {
+                "@type": "LocalBusiness",
+                "name": "Emmnez Water Solution – Owerri Office",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Shop 2 Olive Plaza Industrial Cluster, Nekede Road",
+                    "addressLocality": "Owerri",
+                    "addressRegion": "Imo State",
+                    "addressCountry": "NG"
+                }
+            },
+            {
+                "@type": "LocalBusiness",
+                "name": "Emmnez Water Solution – Eket Office",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "29 Idua Road",
+                    "addressLocality": "Eket",
+                    "addressRegion": "Akwa Ibom State",
+                    "addressCountry": "NG"
+                }
+            },
+            {
+                "@type": "LocalBusiness",
+                "name": "Emmnez Water Solution – Uyo Office",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "4 Tabernacle Road, off Ikot Ekpene Road",
+                    "addressLocality": "Uyo",
+                    "addressRegion": "Akwa Ibom State",
+                    "addressCountry": "NG"
+                }
+            },
+            {
+                "@type": "LocalBusiness",
+                "name": "Emmnez Water Solution – Ughelli Office",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "No. 1 Kez College Road, Ekrejebor",
+                    "addressLocality": "Ughelli",
+                    "addressRegion": "Delta State",
+                    "addressCountry": "NG"
+                }
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Water Treatment" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Water Factory Installation" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Equipment & Product Supply" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Maintenance & Support" } }
+            ]
+        }
+    }
+    </script>
 </head>
 
 <body>
@@ -80,7 +169,17 @@
 
     <main>
         <!-- Section 1: Hero -->
-        <section class="hero" style="background-image: url('images/hero-machine.jpg');">
+        <section class="hero" aria-roledescription="carousel" aria-label="Emmnez work highlights">
+            <div class="hero-slides">
+                <img src="images/hero-machine.webp" alt="Emmnez technician operating a water sachet packing machine"
+                    class="hero-slide is-active" width="1440" height="1920" fetchpriority="high">
+                <img src="images/hero-2.webp" alt="The Emmnez team on site at a client location"
+                    class="hero-slide" width="1440" height="1920" loading="lazy">
+                <img src="images/hero-3.webp" alt="Reverse osmosis water treatment system installed by Emmnez"
+                    class="hero-slide" width="1080" height="1920" loading="lazy">
+                <img src="images/hero-4.webp" alt="Clean drinking water station installed at a school by Emmnez"
+                    class="hero-slide" width="1440" height="1920" loading="lazy">
+            </div>
             <div class="container">
                 <div class="hero-content">
                     <h1>Clean Water Solutions Made Simple</h1>
@@ -89,6 +188,36 @@
                     <div class="hero-btns">
                         <a href="contact.html" class="btn btn-primary">Get a Quote</a>
                         <a href="contact.html" class="btn btn-secondary">Talk to an Expert</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-dots" role="tablist" aria-label="Choose a slide">
+                <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+                <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+                <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+                <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+            </div>
+        </section>
+
+        <!-- Section: Stats -->
+        <section id="stats" class="stats-band animate-on-scroll">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Years in Business</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Offices Nationwide</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">14+</div>
+                        <div class="stat-label">Completed Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">States Served</div>
                     </div>
                 </div>
             </div>
@@ -194,7 +323,7 @@
 
                 <div class="grid-3">
                     <div class="project-card">
-                        <img src="images/project-ella-water-factory.png" alt="Ella Table Water Factory" class="project-img"
+                        <img src="images/project-ella-water-factory.webp" alt="Ella Table Water Factory" class="project-img"
                             loading="lazy" width="600" height="400">
                         <div class="project-info">
                             <h3>Ella Table Water</h3>
@@ -202,7 +331,7 @@
                         </div>
                     </div>
                     <div class="project-card">
-                        <img src="images/project-navy-water-system.jpg" alt="Navy Base Quarters Water System" class="project-img"
+                        <img src="images/project-navy-water-system.webp" alt="Navy Base Quarters Water System" class="project-img"
                             loading="lazy" width="600" height="400">
                         <div class="project-info">
                             <h3>Navy Base Quarters</h3>
@@ -210,7 +339,7 @@
                         </div>
                     </div>
                     <div class="project-card">
-                        <img src="images/project-school-water-station.jpg" alt="Carina International Montessori School Water Station"
+                        <img src="images/project-school-water-station.webp" alt="Carina International Montessori School Water Station"
                             class="project-img" loading="lazy" width="600" height="400">
                         <div class="project-info">
                             <h3>Carina International Montessori</h3>

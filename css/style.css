@@ -292,9 +292,27 @@ main {
     min-height: 500px;
     display: flex;
     align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.hero-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
+}
+
+.hero-slide.is-active {
+    opacity: 1;
 }
 
 .hero::before {
@@ -305,14 +323,52 @@ main {
     width: 100%;
     height: 100%;
     background: linear-gradient(to right, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.4));
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     color: var(--secondary-white);
     max-width: 600px;
     animation: fadeIn 1s ease-out forwards;
+}
+
+.hero-dots {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(16px, 4vw, 28px);
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    gap: 10px;
+}
+
+.hero-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.hero-dot:hover {
+    border-color: var(--secondary-white);
+}
+
+.hero-dot.is-active {
+    background-color: var(--secondary-white);
+    border-color: var(--secondary-white);
+    transform: scale(1.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide {
+        transition: none;
+    }
 }
 
 .hero h1 {
@@ -331,6 +387,47 @@ main {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+}
+
+/* Stats Band */
+.stats-band {
+    padding: clamp(32px, 6vw, 48px) 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0 12px;
+}
+
+.stat-number {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 800;
+    color: var(--primary-navy);
+    line-height: 1;
+}
+
+.stat-label {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-item:not(:first-child) {
+        border-left: 1px solid var(--border-light);
+    }
 }
 
 /* Grid Layouts */

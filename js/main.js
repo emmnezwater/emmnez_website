@@ -55,6 +55,61 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Hero Slideshow
+    const heroSection = document.querySelector('.hero');
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroDots = document.querySelectorAll('.hero-dot');
+
+    if (heroSection && heroSlides.length > 1) {
+        let heroIndex = 0;
+        let heroTimer = null;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function showHeroSlide(nextIndex) {
+            heroSlides[heroIndex].classList.remove('is-active');
+            heroDots[heroIndex].classList.remove('is-active');
+            heroDots[heroIndex].setAttribute('aria-selected', 'false');
+
+            heroIndex = (nextIndex + heroSlides.length) % heroSlides.length;
+
+            heroSlides[heroIndex].classList.add('is-active');
+            heroDots[heroIndex].classList.add('is-active');
+            heroDots[heroIndex].setAttribute('aria-selected', 'true');
+        }
+
+        function stopHero() {
+            clearInterval(heroTimer);
+            heroTimer = null;
+        }
+
+        function startHero() {
+            if (prefersReducedMotion || document.hidden) return;
+            stopHero();
+            heroTimer = setInterval(() => showHeroSlide(heroIndex + 1), 6000);
+        }
+
+        heroDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                showHeroSlide(i);
+                startHero();
+            });
+        });
+
+        heroSection.addEventListener('mouseenter', stopHero);
+        heroSection.addEventListener('mouseleave', startHero);
+        heroSection.addEventListener('focusin', stopHero);
+        heroSection.addEventListener('focusout', startHero);
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopHero();
+            } else {
+                startHero();
+            }
+        });
+
+        startHero();
+    }
+
     // Scroll Animations
     const observerOptions = {
         root: null,
