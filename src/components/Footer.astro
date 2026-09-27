@@ -1,0 +1,24 @@
+---
+import { nav, site } from '@/data/site';
+---
+<footer class="site-footer">
+  <div class="footer-orbit" aria-hidden="true"></div>
+  <div class="footer-main">
+    <p class="eyebrow">Let’s solve it together</p>
+    <h2>Every water challenge<br />deserves an <em>engineered answer.</em></h2>
+    <div class="footer-actions">
+      <a class="button button-light" href="/contact.html">Start a project <span aria-hidden="true">↗</span></a>
+      <a class="text-link" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer">Talk on WhatsApp <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+  <div class="footer-grid">
+    <a class="brand footer-brand" href="/"><img src="/images/logo-mark.png" width="40" height="60" alt="" /><span class="brand-name">Emmnez <small>Water Solution Ltd</small></span></a>
+    <div><p class="footer-label">Navigate</p>{nav.slice(1).map(item => <a href={item.href}>{item.label}</a>)}</div>
+    <div><p class="footer-label">Contact</p><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+    <div><p class="footer-label">Head office</p><address>{site.address}</address></div>
+  </div>
+  <div class="footer-base"><span>© {new Date().getFullYear()} {site.name}</span><span>Engineering cleaner water across Nigeria.</span></div>
+</footer>
+<a class="floating-whatsapp" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer" aria-label="Chat with Emmnez on WhatsApp">
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12.04 2a9.84 9.84 0 0 0-8.48 14.8L2 22l5.34-1.5A9.98 9.98 0 1 0 12.04 2Zm0 17.98a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.17.89.85-3.09-.2-.32a8.03 8.03 0 1 1 6.95 3.83Zm4.43-6.04c-.24-.12-1.44-.71-1.66-.79-.23-.08-.39-.12-.56.12-.16.24-.63.79-.77.95-.14.17-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2a7.25 7.25 0 0 1-1.34-1.67c-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.41-.56-.42h-.47a.9.9 0 0 0-.65.3c-.22.24-.85.83-.85 2.02s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.47-.28Z"/></svg>
+</a>

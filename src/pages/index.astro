@@ -1,0 +1,66 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import LiquidDrop from '@/components/LiquidDrop.astro';
+import { projects, services, site } from '@/data/site';
+
+const schema = {
+  '@context': 'https://schema.org', '@type': 'ProfessionalService', name: site.name,
+  url: `${site.url}/`, logo: `${site.url}/images/logo-mark.png`, image: `${site.url}/images/hero-machine.webp`,
+  description: 'Water treatment, factory installation, equipment supply and technical support across Nigeria.',
+  telephone: site.phone, email: site.email, foundingDate: site.foundingDate,
+  address: { '@type': 'PostalAddress', streetAddress: '8 Micheal Street, Iwofe Road', addressLocality: 'Port Harcourt', addressRegion: 'Rivers State', addressCountry: 'NG' },
+  areaServed: ['Rivers State', 'Imo State', 'Akwa Ibom State', 'Delta State'],
+  hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Water engineering services', itemListElement: services.map(service => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: service.title } })) }
+};
+---
+<BaseLayout title={site.name} description="Engineered water treatment, factory installation, equipment supply and expert support across Nigeria.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <section class="hero">
+    <div class="hero-media"><img src="/images/hero-machine.webp" alt="Emmnez engineer operating a water production system" width="1440" height="1920" fetchpriority="high" /></div>
+    <div class="hero-grid"></div>
+    <canvas class="hero-wave-canvas" data-hero-waves aria-hidden="true"></canvas>
+    <div class="hero-lens" data-hero-lens aria-hidden="true"></div>
+    <LiquidDrop />
+    <div class="hero-content">
+      <div><p class="eyebrow" data-hero-line>Water engineering / Nigeria</p><h1 class="display" data-hero-line>Clean water,<br /><em>engineered</em><br />for what’s next.</h1></div>
+      <div class="hero-aside" data-hero-line><p>We design, install and maintain high-performance water systems for homes, institutions and industries.</p><a class="button" href="/contact.html">Request a site assessment <span aria-hidden="true">↗</span></a></div>
+    </div>
+    <span class="hero-scroll">Scroll to explore</span>
+  </section>
+
+  <section class="trust-bar" aria-label="Company statistics">
+    <div class="stat"><strong data-counter="10" data-suffix="+">10+</strong><span>Years engineering water</span></div>
+    <div class="stat"><strong data-counter="5">5</strong><span>Offices nationwide</span></div>
+    <div class="stat"><strong data-counter="14" data-suffix="+">14+</strong><span>Completed projects</span></div>
+    <div class="stat"><strong data-counter="4">4</strong><span>States served</span></div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="section-head" data-reveal><div><p class="eyebrow">Capabilities</p><h2>One partner for your <em>whole water system.</em></h2></div><p>From the first water test to long-term servicing, we bring every stage under one accountable engineering team.</p></div>
+    <div class="service-list" data-stagger>
+      {services.map(service => <a class="service-row" href={`/services.html#${service.slug}`}><span>{service.number}</span><h3>{service.title}</h3><p>{service.summary}</p><i aria-hidden="true">↗</i></a>)}
+    </div>
+  </section>
+
+  <section class="section section-ivory">
+    <div class="pipeline-wrap">
+      <div class="pipeline-copy" data-reveal><p class="eyebrow">The Emmnez method</p><h2>From uncertain source to dependable output.</h2><p class="lead">Every system begins with the real conditions on site—not an off-the-shelf assumption.</p></div>
+      <div class="pipeline" data-stagger>
+        <div class="pipeline-progress" aria-hidden="true"></div>
+        {[
+          ['01', 'Assess', 'We study the source, site, intended use and operational demand.'],
+          ['02', 'Engineer', 'We specify the treatment stages, capacity, equipment and layout.'],
+          ['03', 'Install', 'Our team procures, integrates, tests and commissions the complete system.'],
+          ['04', 'Support', 'Training, maintenance and responsive technical support protect performance.']
+        ].map(([number, title, copy]) => <article class="pipeline-stage" data-index={number}><h3>{title}</h3><p>{copy}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head" data-reveal><div><p class="eyebrow">Selected work</p><h2>Systems built for <em>real conditions.</em></h2></div><p>Production facilities, institutional water stations and high-capacity residential systems delivered across Nigeria.</p></div>
+    <div class="project-grid">{projects.map(project => <ProjectCard project={project} />)}</div>
+    <div style="margin-top:3rem;text-align:center"><a class="button button-outline" href="/projects.html">Explore our projects <span aria-hidden="true">↗</span></a></div>
+  </section>
+</BaseLayout>

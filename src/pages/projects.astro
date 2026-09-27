@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { projects } from '@/data/site';
+const records = [
+  ['Dolphin Ice Table Water', 'Machine procurement, factory installation and NAFDAC registration'],
+  ['Zoey Table Water', 'Machine procurement, factory installation and NAFDAC registration'],
+  ['Surplus Table Water', 'Machine procurement, factory installation and NAFDAC registration'],
+  ['Adonai Table Water', 'Machine procurement, factory installation and NAFDAC registration'],
+  ['Sarah’s Comfort Table Water', 'Factory installation and production support'],
+  ['Crèche International School', 'Treatment plant installation'],
+  ['Hon. Anwuri', 'Smart purification device installation'],
+  ['Maroke Table Water', 'Water treatment'],
+  ['Blu Table Water', 'Documentation and NAFDAC processing']
+];
+---
+<BaseLayout title="Projects" description="Explore selected water treatment and factory installations delivered by Emmnez Water Solution across Nigeria." image="/images/project-ella-water-factory.webp">
+  <PageHero eyebrow="Selected work / Nigeria" title="Proof, installed." accent="Performance, delivered." description="A growing record of water systems built for commercial production, public institutions, schools and residential communities." />
+  <section class="section"><div class="project-grid">{projects.map(project => <ProjectCard project={project} />)}</div></section>
+  <section class="section section-ivory">
+    <div class="section-head" data-reveal><div><p class="eyebrow">Installation record</p><h2>More work.<br /><em>More trust.</em></h2></div><p>Additional factory, purification and regulatory-support engagements completed for clients across our service region.</p></div>
+    <div class="service-list" style="border-color:var(--line)" data-stagger>{records.map(([name, scope], index) => <div class="service-row" style="border-color:var(--line)"><span>0{index + 1}</span><h3 style="font-size:clamp(1.3rem,2.5vw,2.4rem)">{name}</h3><p style="color:#5f7271">{scope}</p><i aria-hidden="true" style="border-color:var(--line)">✓</i></div>)}</div>
+  </section>
+</BaseLayout>
