@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import { offices, services, site } from '@/data/site';
+---
+<BaseLayout title="Contact Us" description="Request a site assessment, quotation or technical support from Emmnez Water Solution.">
+  <PageHero eyebrow="Start a conversation" title="Tell us the challenge." accent="We’ll engineer the answer." description="Share what you need, where the project is located and how we can reach you. Our team will guide the next step." />
+  <section class="section section-ivory">
+    <div class="contact-grid">
+      <div data-reveal>
+        <p class="eyebrow">Request a quote</p><h2 style="font-size:clamp(2.4rem,5vw,5rem);line-height:1;letter-spacing:-.05em">Let’s understand your project.</h2>
+        <div class="form-status" role="status" aria-live="polite" tabindex="-1" data-form-status></div>
+        <form class="quote-form" action={`https://formsubmit.co/${site.email}`} method="POST" data-quote-form>
+          <input type="hidden" name="_subject" value="New quote request from Emmnez Website" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+          <div class="field-row"><div class="field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required /></div><div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required /></div></div>
+          <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field"><label for="service">Service needed</label><select id="service" name="service" required><option value="">Choose a service</option>{services.map(service => <option value={service.title}>{service.title}</option>)}<option>Other</option></select></div>
+          <div class="field"><label for="location">Project location</label><input id="location" name="location" autocomplete="street-address" /></div>
+          <div class="field"><label for="message">Project details</label><textarea id="message" name="message" required></textarea></div>
+          <label class="consent"><input type="checkbox" required name="consent" value="yes" /><span>I agree that Emmnez may use these details to respond to my enquiry.</span></label>
+          <button class="button" type="submit">Send request <span aria-hidden="true">↗</span></button>
+          <noscript><p>Your browser will open FormSubmit to complete this request.</p></noscript>
+        </form>
+      </div>
+      <aside class="contact-aside" data-reveal>
+        <p class="eyebrow">Direct contact</p><h2>Prefer to speak now?</h2>
+        <div class="contact-line"><span>Telephone</span><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></div>
+        <div class="contact-line"><span>Email</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+        <div class="contact-line"><span>WhatsApp</span><a href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener noreferrer">Start a conversation ↗</a></div>
+        <div class="map"><iframe title="Map showing the Emmnez Water head office" src="https://maps.google.com/maps?q=8%20Micheal%20Street%2C%20Iwofe%20Road%2C%20Port%20Harcourt%2C%20Nigeria&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </aside>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head" data-reveal><div><p class="eyebrow">Our footprint</p><h2>Five offices.<br /><em>One standard.</em></h2></div><p>Local presence across four states, backed by one technical team.</p></div>
+    <div class="office-grid" data-stagger>{offices.map(([name, street, region], index) => <article class="office-card"><span class="detail-number">0{index + 1}</span><h3>{name}</h3><p>{street}<br />{region}</p></article>)}</div>
+  </section>
+</BaseLayout>

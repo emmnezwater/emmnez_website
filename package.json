@@ -1,0 +1,21 @@
+{
+  "name": "emmnez-water-website",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "npm run build && node --test tests/site.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource/instrument-serif": "latest",
+    "@fontsource/manrope": "latest",
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "gsap": "latest",
+    "typescript": "latest"
+  }
+}

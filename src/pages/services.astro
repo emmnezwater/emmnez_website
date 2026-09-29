@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import { services } from '@/data/site';
+const catalog = [
+  ['Production machines', ['Auto-bottling lines', 'Sachet water machines', 'PET blowing machines', 'Coding machines', 'Sleeve wrappers']],
+  ['Treatment systems', ['Reverse osmosis systems', 'Fibre treatment plants', 'Smart purification devices', 'Ozone generators', 'Industrial UV systems']],
+  ['Media and chemicals', ['Activated carbon', 'Liquified chlorine', 'Aluminium sulphate', 'Calcium hydroxide', 'Corosex and Accusand']],
+  ['Accessories and parts', ['Filter housings and cartridges', 'Pumps and electric motors', 'Laboratory and TDS meters', 'Contactors and relays', 'Sealing and cutting assemblies']]
+];
+---
+<BaseLayout title="Services" description="Water treatment, factory installation, equipment supply, maintenance and consultation engineered for Nigerian homes and industry." image="/images/services-water-treatment.webp">
+  <PageHero eyebrow="Capabilities / 04" title="Complete systems." accent="One accountable team." description="Engineering, machinery and support brought together around the water quality and production outcomes your operation needs." />
+  <section class="section" style="padding-left:0;padding-right:0;padding-top:0">
+    <div class="detail-grid">
+      {services.map(service => (
+        <article class="detail-card" id={service.slug}>
+          <div data-reveal><span class="detail-number">Service / {service.number}</span><h2>{service.title}</h2><p class="lead">{service.summary}</p><ul class="feature-list">{service.features.map(feature => <li>{feature}</li>)}</ul><p style="margin-top:2rem"><a class="button" href="/contact.html">Discuss this service <span aria-hidden="true">↗</span></a></p></div>
+          <div class="detail-image" data-reveal><img src={service.image} alt={`${service.title} by Emmnez Water`} loading="lazy" width="900" height="1200" /></div>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="section section-ivory">
+    <div class="section-head" data-reveal><div><p class="eyebrow">Supply catalogue</p><h2>The components that keep <em>production moving.</em></h2></div><p>We source essential machines, treatment media and replacement parts from trusted manufacturers.</p></div>
+    <div class="catalog-grid" data-stagger>{catalog.map(([title, items]) => <article class="catalog-card"><h3>{title}</h3><ul>{(items as string[]).map(item => <li>{item}</li>)}</ul></article>)}</div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+interface Props { eyebrow: string; title: string; accent: string; description: string; }
+const { eyebrow, title, accent, description } = Astro.props;
+import LiquidDrop from '@/components/LiquidDrop.astro';
+---
+<header class="page-hero">
+  <LiquidDrop />
+  <div class="page-hero-inner">
+    <p class="eyebrow" data-hero-line>{eyebrow}</p>
+    <h1 class="display" data-hero-line>{title} <em>{accent}</em></h1>
+    <p class="lead" data-hero-line>{description}</p>
+  </div>
+</header>

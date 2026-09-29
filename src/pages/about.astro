@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import { team } from '@/data/site';
+---
+<BaseLayout title="About Us" description="Meet the people and principles behind Emmnez Water Solution, engineering dependable clean-water systems since 2015." image="/images/about-company.webp">
+  <PageHero eyebrow="Established / 2015" title="Built on clarity." accent="Driven by better water." description="A multidisciplinary Nigerian team bringing engineering, machinery, regulatory guidance and lasting support under one roof." />
+  <section class="section">
+    <div class="section-head" data-reveal><div><p class="eyebrow">Who we are</p><h2>Practical expertise for an <em>essential resource.</em></h2></div><p>Emmnez Water Solution began on 12 June 2015 as a water engineering, purification and factory-installation practice. Today, we deliver integrated consulting, equipment and technical support for homes, hospitals, schools, churches and industry.</p></div>
+    <div class="detail-image" style="aspect-ratio:16/8" data-reveal><img src="/images/about-company.webp" alt="The Emmnez Water engineering team" loading="lazy" width="900" height="1200" /></div>
+  </section>
+  <section class="section section-dark">
+    <div class="section-head"><div><p class="eyebrow">Our principles</p><h2>Technology with a <em>human purpose.</em></h2></div></div>
+    <div class="values-grid" data-stagger>
+      <article class="value-card" style="background:var(--ink-2);border-color:var(--line-dark)"><span class="detail-number">01</span><h3>Mission</h3><p style="color:var(--muted)">Build lasting client relationships and deliver exceptional service through innovation and advanced technology.</p></article>
+      <article class="value-card" style="background:var(--ink-2);border-color:var(--line-dark)"><span class="detail-number">02</span><h3>Vision</h3><p style="color:var(--muted)">Set a higher standard for water engineering, factory installation and equipment support across Nigeria.</p></article>
+      <article class="value-card" style="background:var(--aqua);color:var(--ink);border-color:var(--aqua)"><span class="detail-number">03</span><h3>Promise</h3><p>Listen carefully, engineer responsibly and remain available long after commissioning.</p></article>
+    </div>
+  </section>
+  <section class="section section-ivory">
+    <div class="section-head" data-reveal><div><p class="eyebrow">The people</p><h2>Experience behind <em>every system.</em></h2></div><p>Engineering, operations, people and customer teams working as one.</p></div>
+    <div class="team-grid" data-stagger>{team.map(([name, role, image]) => <figure class="team-card"><div class="team-photo"><img src={`/images/${image}`} alt={name} loading="lazy" /></div><figcaption><strong>{name}</strong><span>{role}</span></figcaption></figure>)}</div>
+  </section>
+</BaseLayout>
